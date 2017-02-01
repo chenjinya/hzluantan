@@ -1,7 +1,7 @@
 var crypto = require('crypto');
 var request = require('request');
-var ak = '5IgE4rei1A1gxVwBujmwcVtn';
-var sk = 'fGgqDvrGIfRlsu4AsbbQWlz1GtLY8VCe';
+var ak = 'bce ak here';
+var sk = 'bce sk here';
 var ocr = require('baidu-ocr-api').create(ak,sk);
 
 
@@ -11,7 +11,7 @@ module.exports = {
         var signature = this.query.signature;
         var timestamp = this.query.timestamp;
         var echostr = this.query.echostr;
-        var token = 'hzluantan';
+        var token = 'wx token here';
         var list = [token, nonce, timestamp];
         list.sort();
         var strList = list.join('');

@@ -1,0 +1,46 @@
+extends ./include/layout
+block header 
+    include ./include/header
+    link( rel="stylesheet" media="all" href="/style/story/editStory.css") 
+block sidemenu
+    include ./include/sidemenu
+block sidebar
+    div.sidebar
+        div.sidebar-title
+        div.sidebar-search
+            input.sidebar-search-input(placeholder="搜索关键词")
+        div.sidebar-list
+            div.sidebar-list-nav
+                button.list-nav-item.active 故事列表
+            ul.list-wrap
+                li.list-item( v-for="item in listbarList", track-by="$index", v-on:click.prevent="sidebarItemClick($index,item)" )
+                    span {{item.title}}
+            div.sidebar-slide &lt;
+block main
+    div.main-writeStory
+        form.writeStory-form(hook-writeStory-form, v-on:submit.prevent='submitwriteStoryForm(this)')
+            div.main-writeStory-header
+                div
+                    if(isNaN(story_id))
+                        label.writeStory-label 新建故事
+                    else 
+                        label.writeStory-label 编辑故事
+
+            div.main-writeStory-title
+                input.writeStory-title(hook-writeStory-title, v-model='title', name="title", required=true, placeholder="故事名字", value='#{title}')
+            div.main-writeStory-body
+                textarea.writeStory-content(hook-writeStory-content, v-model='content', name="content", required=true, placeholder="故事概要，包括大概框架、结构、主要角色、故事背景等等", v-on:keyup="editStoryContentChange()" ) #{content}
+            div.main-writeStory-preview.
+                {{content_preview}}
+            div.main-writeStory-bottom
+                input(type='hidden', v-model='story_id', value="#{story_id}")
+                
+                if(isNaN(story_id))
+                    button.btn.point(type='submit') 发布故事概要
+                else
+                    button.btn.point(type='submit') 编辑故事概要
+                    button.btn.no-border.sm-btn( type='button', onClick='javascript:location.href="/story/editStory"') 新建故事
+block footer
+    include ./include/footer
+    script( src="/javascript/app/story/editStory.js" )
+        

@@ -1,0 +1,31 @@
+extends ./include/layout
+block header 
+    include ./include/header
+    link( rel="stylesheet" media="all" href="/style/story/readStory.css") 
+block sidemenu
+    include ./include/sidemenu
+block sidebar
+    div.sidebar
+        div.sidebar-title
+        div.sidebar-search
+            input.sidebar-search-input(placeholder="搜索关键词")
+        div.sidebar-list
+            div.sidebar-list-nav
+                button.list-nav-item.active 故事列表
+            ul.list-wrap( v-if="listbarList")
+                li.list-item( v-for="item in listbarList", track-by="$index", v-on:click.prevent="sidebarItemClick($index,item, #{story_id})" , v-bind:class='{"active": (#{story_id} == item.story_id)}')
+                    span {{item.title}} 
+            div.sidebar-slide &lt;
+block main
+    div.main-content.animated.fadeIn( data-story-id="#{story_id}")
+        div.main-readStory-title
+            p 《{{title}}》
+        div.main-readStory-body.
+            {{{content}}}
+        div.main-readStory-next
+            button.btn.sm-btn.no-border( v-on:click.prevent="writeStoryChapter(#{story_id}, #{node_id})" ) 续写故事
+            button.btn( v-on:click.prevent="getNodeChaptersInfo(#{story_id}, #{node_id})" ) 读故事
+block footer
+    include ./include/footer
+    script( src="/javascript/app/story/readStory.js" )
+        

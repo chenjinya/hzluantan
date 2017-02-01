@@ -1,0 +1,31 @@
+#sidebar{
+    display: none;
+}
+#main{
+    margin-left: 80px;
+    max-width: none;
+}
+.main-readStory-title {
+	text-align: center;
+	padding-top:20px;
+    font-size: 34px;
+    font-weight: normal;;
+    margin: 10px auto;
+}
+.main-readStory-body{
+	padding: 20px 40px;
+    color: #999;
+}
+.main-readStory-body p {
+	font-size: 18px;
+	line-height: 2;
+    text-indent: 2em;
+}
+
+.main-readStory-next {
+	text-align: center;
+	padding-bottom: 100px;
+}
+.main-readStory-next button {
+	margin: 10px;
+}

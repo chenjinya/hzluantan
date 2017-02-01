@@ -1,0 +1,47 @@
+extends ./include/layout
+block header 
+    include ./include/header
+    link( rel="stylesheet" media="all" href="/style/story/editChapter.css") 
+block sidemenu
+    include ./include/sidemenu
+block sidebar
+    div.sidebar-title
+    div.sidebar-search
+        input.sidebar-search-input(placeholder="搜索关键词")
+    div.sidebar-list
+        
+block main
+    div#vue-app-editChapter.main-editChapter.animated.fadeIn
+        form.editChapter-form(hook-editChapter-form, v-on:submit.prevent='submitEditChapterForm(this)')
+            div.main-editChapter-header
+                label.editChapter-label 新章节:
+                if node_info['content']
+                    span.bold #{node_info['content']} 
+            div.main-editChapter-title
+                input.editChapter-title(hook-editChapter-title, v-model='title', name="title", required=true, placeholder="填写标题")
+            div.main-editChapter-body
+                button.btn.sm-btn.no-border(type="button", onclick="javascript:window.open('/story/readStory?id=#{story_id}')") 查看故事概要
+                textarea.editChapter-content(hook-editChapter-content, v-model='content', name="content",v-on:keyup='editChapterContentChange()' required=true, placeholder="填写标题")
+            div.main-editChapter-preview
+                div
+                    label.editChapter-label 预览
+                div.
+                    {{{content_preview}}}
+            div.main-editChapter-addon
+                div
+                    label.editChapter-label 添加分支
+                div(v-for="item in nodes", track-by="$index")
+                    label.editChapter-input-pre {{$index + 1}}.
+                    input.editChapter-node-input(name="node[]" , v-model='item.content', required=true, placeholder="分支概述")
+                    button.btn.sm-btn.add-node-btn(type="button",v-if="nodes.length > 1" v-on:click.prevent="remNode($index)") ➖ 删除分支
+                div
+                    button.btn.sm-btn.add-node-btn(type="button", v-on:click.prevent="addNode(this)") ➕ 增加分支
+            
+            div.main-editChapter-bottom
+                input(type="hidden" , v-model='story_id', required=true, value="#{story_id}")
+                input(type="hidden" , v-model='node_id', required=true, value="#{node_id}")
+                button.btn.point(type='submit') 提交审核
+block footer
+    include ./include/footer
+    script( src="/javascript/app/story/editChapter.js" )
+        

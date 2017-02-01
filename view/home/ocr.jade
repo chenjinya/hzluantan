@@ -1,0 +1,43 @@
+html
+    title 乱弹 OCR识图
+    meta( name="apple-mobile-web-app-capable" content="no" )
+    meta( name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes" )
+    meta( name="apple-mobile-web-app-capable" content="no")
+    link( rel="stylesheet" media="all" href="/style/vendor/bootstrap.min.css") 
+    link( rel="stylesheet" media="all" href="/style/luantan/main.css") 
+     
+    body
+        nav.navbar.navbar-default(role="navigation")
+            div.container-fluid
+                div.navbar-header
+                    a.navbar-brand 乱弹 OCR
+                    button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                div#navbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li 
+                            a(href="/ocr") OCR
+        div.container-fluid
+
+            div.panel.panel-default
+                div.panel-body.ocr-body
+                    div.page-header
+                        h1 OCR识图上传
+                    div.alert.alert-warning 大分辨率有点问题，手机拍摄的文字请用手机截图后再上传。
+                    input.ocr-file-input(type='file') 
+                    button.ocr-upload-button.btn.btn-primary(type='button') 选择图片
+                    img.ocr-image-preview.img-thumbnail
+
+                    div.progress.ocr-upload-progress
+                        div.progress-bar.progress-bar-striped.ocr-upload-progress-bar( role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%")
+                    div.alert.alert-info.ocr-alert  OCR engine by Baidu.com
+             div.panel.panel-default.ocr-result
+                div.panel-body
+        script( src="/javascript/vendor/jquery.min.js" )
+        script( src="/javascript/vendor/bootstrap.min.js" )
+        script( src="http://websdk.cdn.bcebos.com/bos/bce-bos-uploader/bce-bos-uploader.bundle.js")
+        script( src="/javascript/app/ocr.js" )
+        

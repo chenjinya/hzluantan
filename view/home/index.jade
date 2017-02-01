@@ -1,0 +1,32 @@
+html
+    title 挥指乱弹
+    meta( name="apple-mobile-web-app-capable" content="no" )
+    meta( name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1,user-scalable=yes" )
+    meta( name="apple-mobile-web-app-capable" content="no")
+    link( rel="stylesheet" media="all" href="/style/vendor/bootstrap.min.css") 
+    link( rel="stylesheet" media="all" href="/style/luantan/main.css") 
+     
+    body
+        nav.navbar.navbar-default(role="navigation")
+            div.container-fluid
+                div.navbar-header
+                    a.navbar-brand 挥指乱弹
+                    button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                div#navbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li 
+                            a(href="/ocr") OCR
+        div.container-fluid
+
+            div.panel.panel-default
+                div.panel-body.ocr-body
+                    p.ocr-title Save Humans
+                    
+            
+        script( src="/javascript/vendor/jquery.min.js" )
+        script( src="/javascript/vendor/bootstrap.min.js" )
+        

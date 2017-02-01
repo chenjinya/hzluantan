@@ -1,0 +1,40 @@
+extends ./include/layout
+block header 
+    include ./include/header
+    link( rel="stylesheet" media="all" href="/style/story/readChapter.css") 
+
+block sidemenu
+    include ./include/sidemenu
+block sidebar
+    div.sidebar-title
+    div.sidebar-search
+        input.sidebar-search-input(placeholder="搜索关键词")
+    div.sidebar-list.animated.fadeIn
+        div.sidebar-list-nav
+            button.list-nav-item.active 支线章节
+            button.list-nav-item 历史章节
+        ul.list-wrap
+            li.list-item( v-for="item in sidebarListData", track-by="$index", v-on:click.prevent="sidebarItemClick($index,item, #{story_id})" , v-bind:class='{"active": (#{chapter_id} == item.chapter_id)}')
+                span {{item.title}} 
+            
+        //-div.sidebar-slide &lt;
+block main
+    div.main-content.animated.fadeIn( data-chapter-id="#{chapter_id}", data-node-id="#{node_id}")
+        div.main-processbar
+            div.processbar-len
+            div.processbar-desc
+        div.main-title
+            h2 {{title}}
+        div.main-body.
+            {{{content}}}
+        div.main-next
+            div
+                button.btn.point(v-for="item in nodes",v-on:click.prevent="nodeBtnClick($index,item)" ) {{item.content}}
+            div
+                button.btn.point.sm-btn.no-border( v-on:click.prevent="zanBtnClick($index, chapter_id)") 赞( {{zan_count}} )
+                //-button.btn.point.sm-btn.no-border( v-on:click.prevent="rewriteBtnClick(#{story_id}, #{chapter_id}, #{node_id})") 重写此章节
+                button.btn.point.sm-btn.no-border( v-if="parent_node_id" v-on:click.prevent="prevChapterBtnClick( story_id, parent_node_id)") 上一章
+block footer
+    include ./include/footer
+    script( src="/javascript/app/story/readChapter.js" )
+        

@@ -1,0 +1,22 @@
+.ocr-body{
+	text-align: center;
+}
+.ocr-title{
+	text-align: center;
+}
+.ocr-upload-button{
+	margin: 10px;
+}
+.ocr-file-input{
+	width: 0;
+	height: 0;
+}
+.ocr-upload-progress{
+	display:none;
+}
+.ocr-result{
+	display: none;
+}
+.ocr-image-preview{
+	display: none;
+}

@@ -1,0 +1,45 @@
+.main-processbar{
+	position: fixed;
+	top:0;
+	width: 100%;
+	background: transparent;
+	
+/*	filter: blur(10px);
+*/}
+.processbar-len{
+	width: 30%;
+	height: 2px;
+	background:  #333;
+	box-shadow: 0 0px 10px #333;
+}
+.main-title {
+	text-align: center;
+	padding-top:20px;
+}
+.main-body{
+	padding: 20px 40px;
+}
+.main-body p {
+	font-size: 18px;
+	line-height: 2;
+    text-indent: 2em;
+    
+}
+
+.main-next {
+	text-align: center;
+	padding-bottom: 100px;
+}
+.main-next button {
+	margin: 10px;
+}
+.zanpoint {
+	
+}
+.sidepoint{
+	
+}
+.prevpoint{
+	
+}
+

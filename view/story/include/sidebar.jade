@@ -1,0 +1,10 @@
+div.sidebar-title
+div.sidebar-search
+    input.sidebar-search-input(placeholder="搜索关键词")
+div.sidebar-list
+    div.sidebar-list-nav
+        button.list-nav-item( v-for="item in sidebarNav", track-by="$index", v-on:click.prevent="item.method($index,item)" )
+    ul.list-wrap
+        li.list-item( v-for="item in listbarList", track-by="$index", v-on:click.prevent="item.method($index,item)" )
+            span item.value
+    div.sidebar-slide &lt;
